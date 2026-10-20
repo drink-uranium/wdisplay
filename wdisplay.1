@@ -1,0 +1,50 @@
+.TH WDISPLAY 1 "October 2026" "wdisplay 0.1" "User Commands"
+.SH NAME
+wdisplay \- monitor configuration for Window Maker
+.SH SYNOPSIS
+.B wdisplay
+[\fB\-\-restore\fR] [\fB\-\-print\fR] [\fB\-\-display\fR \fIname\fR]
+.SH DESCRIPTION
+.B wdisplay
+is a WPrefs style preferences window for setting up monitors: resolution,
+refresh rate, rotation, the primary display and where the displays are
+placed on the desk. Drag the displays in the
+.I Arrangement
+box to match their physical placement and press
+.BR Apply .
+The new settings must be confirmed within 15 seconds or the old ones come
+back.
+.PP
+Confirmed settings are stored per combination of connected monitors in
+.I ~/GNUstep/Defaults/WDisplay
+and a call to
+.B wdisplay \-\-restore
+is added to
+.IR ~/GNUstep/Library/WindowMaker/autostart ,
+so the layout is applied again at every Window Maker start.
+.SH OPTIONS
+.TP
+.B \-\-restore
+Apply the layout saved for the monitors connected right now and exit.
+Does nothing if no layout was saved for them.
+.TP
+.B \-\-print
+Print the xrandr command that \-\-restore would run and exit.
+.TP
+.BI \-\-display " name"
+The X display to use.
+.SH ENVIRONMENT
+.TP
+.B WMAKER_USER_ROOT
+Used instead of ~/GNUstep, as in Window Maker.
+.TP
+.B WDISPLAY_DRY_RUN
+Print the xrandr commands instead of running them.
+.TP
+.B WDISPLAY_FAKE
+Show a made up three monitor setup, for trying the program out.
+Nothing is changed on the X server.
+.SH SEE ALSO
+.BR wmaker (1),
+.BR WPrefs (1),
+.BR xrandr (1)
